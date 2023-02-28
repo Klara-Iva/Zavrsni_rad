@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="226dp"
+        android:layout_height="205dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-31dp"
+        android:layout_marginTop="-94dp"
+        app:srcCompat="@drawable/circle_37"
+        app:tint="@color/orange_variant" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="233dp"
+        android:layout_height="205dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-70dp"
+        android:layout_marginBottom="-16dp"
+        app:srcCompat="@drawable/circle_37"
+        app:tint="@color/orange_variant" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="109dp"
+        android:layout_height="105dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-20dp"
+        android:layout_marginTop="29dp"
+        app:srcCompat="@drawable/circle_37"
+        app:tint="@color/orange" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="133dp"
+        android:layout_height="133dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="-29dp"
+        app:srcCompat="@drawable/circle_37"
+        app:tint="@color/orange" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-6dp"
+        android:layout_marginBottom="-25dp"
+        app:srcCompat="@drawable/circle_37"
+        app:tint="#A5544C" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="50dp"
+        android:layout_height="43dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="75dp"
+        android:rotation="-20"
+        app:srcCompat="@drawable/ic_baseline_map_24"
+        app:tint="?colorSecondary" />
+
+    <ImageView
+        android:id="@+id/imageView23"
+        android:layout_width="80dp"
+        android:layout_height="82dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="99dp"
+        android:rotation="20"
+        app:srcCompat="@drawable/ic_round_connecting_airports_24"
+        app:tint="@color/orange" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="99dp"
+        android:layout_marginBottom="11dp"
+        android:rotation="0"
+        app:srcCompat="@drawable/ic_baseline_location_on_24"
+        app:tint="@color/orange_variant" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="38dp"
+        android:layout_height="37dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/ic_baseline_attractions_24"
+        app:tint="?colorSecondary" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="37dp"
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="58dp"
+        app:srcCompat="@drawable/ic_round_castle_24"
+        app:tint="?colorSecondary" />
+
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="40dp"
+        app:srcCompat="@drawable/ic_round_signpost_24"
+        app:tint="?colorSecondary" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView8"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Odaberite sve kategorije za koje mislite da bi Vas mogle zanimati jer će se na temelju njih stvoriti prepouka za turistička odredišta. \n\nPromjena kategorija moguća je u bilo kojem trenutku."
+        android:textColor="?colorSecondary"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupCategories"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView14"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip5"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aktualno"
+            android:textSize="14dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip2"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="duhovnost"
+            android:textSize="14dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip4"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="eksperimenti"
+            android:textSize="14dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/građevine"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="građevine"
+            android:textSize="14dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/interaktivno"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="interaktivno"
+            android:textSize="14dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="spomenici"
+            android:textSize="14dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip3"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="povijest"
+            android:textSize="14dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/priroda"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="priroda"
+            android:textSize="14dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/umjetnost"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="umjetnost"
+            android:textSize="14dp" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <Button
+        android:id="@+id/savePreferencesButton"
+        android:layout_width="179dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/chipGroupCategories"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="Spremi"
+        android:textSize="14dp"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroupCategories" />
+
+</RelativeLayout>

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+
+        tools:layout_editor_absoluteY="-16dp">
+
+        <RelativeLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/faveourite"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignTop="@+id/findItOnMap"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:layout_toStartOf="@+id/excitementAverage"
+                android:rotation="0"
+                app:srcCompat="@drawable/heart"
+                app:tint="#F65C5C" />
+
+            <ImageView
+                android:id="@+id/findItOnMap"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/description"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="32dp"
+                android:layout_toEndOf="@+id/zanimljivost"
+                android:rotation="0"
+                app:srcCompat="@drawable/ic_find_on_map"
+                app:tint="?colorSecondary" />
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="wrap_content"
+                android:layout_height="261dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="-5dp"
+                android:layout_marginEnd="1dp"
+                android:adjustViewBounds="true"
+                android:baselineAlignBottom="false"
+                android:scaleType="centerCrop"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.521"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chip44"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="28dp"
+                android:scrollHorizontally="false"
+                android:text="Location Name"
+                android:textAlignment="center"
+
+                android:textAllCaps="true"
+                android:textColor="?colorSecondary"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image2" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentBottom="false"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="serif"
+                android:text="Location Description"
+                android:textSize="14dp" />
+
+            <RatingBar
+                android:id="@+id/ratingBar_excitement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/zanimljivost"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:progressTint="?colorPrimary"
+                android:secondaryProgressTint="#00FFFFFF"
+                android:stepSize="0.5" />
+
+            <RatingBar
+                android:id="@+id/ratingBar_accessibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pristupacnost"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:progressTint="?colorPrimary"
+                android:secondaryProgressTint="#00FFFFFF"
+
+                android:stepSize="0.5" />
+
+
+            <RatingBar
+                android:id="@+id/ratingBar_originality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/orginalnost"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:progressTint="?colorPrimary"
+                android:secondaryProgressTint="#00FFFFFF"
+                android:stepSize="0.5" />
+
+            <RatingBar
+                android:id="@+id/ratingBar_photogenic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fotogenicnost"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:progressTint="?colorPrimary"
+                android:secondaryProgressTint="#00FFFFFF"
+                android:stepSize="0.5" />
+
+            <Button
+                android:id="@+id/saveRatings"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView7"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp"
+                android:text="Spremi"
+                android:textSize="14dp"
+                app:cornerRadius="20dp" />
+
+            <TextView
+                android:id="@+id/zanimljivost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView16"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="40dp"
+                android:text="zanimljivost:"
+                android:textColor="?colorSecondary"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/excitementAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/zanimljivost"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+
+                android:layout_marginEnd="32dp"
+                android:text="prosjek"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/pristupacnost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ratingBar_excitement"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:text="pristupačnost:"
+                android:textColor="?colorSecondary"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/orginalnost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ratingBar_accessibility"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:text="orginalnost:"
+                android:textColor="?colorSecondary"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/fotogenicnost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ratingBar_originality"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:text="fotogeničnost:"
+                android:textColor="?colorSecondary"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/timeworth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ratingBar_photogenic"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:text="vremenski zahtjevno: "
+                android:textColor="?colorSecondary"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/accessibilityAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ratingBar_excitement"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:text="prosjek"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/photogenicAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ratingBar_originality"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:text="prosjek"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/timeWorthAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ratingBar_photogenic"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:text="prosjek"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/originalityAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ratingBar_accessibility"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:text="prosjek"
+                android:textSize="14dp" />
+
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip44"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image2"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentEnd="false"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="category"
+                android:textAlignment="center"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="@id/image2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="165dp"
+                android:layout_height="165dp"
+                android:layout_below="@+id/image1"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentEnd="false"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="-77dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/fullcircle"
+
+                android:scaleType="centerCrop"
+
+
+                />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image2"
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                android:layout_below="@+id/image1"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentEnd="false"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="-72dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="10dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+
+                app:shapeAppearanceOverlay="@style/roundImageView" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/timeworth"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10sek"
+                    android:textSize="14dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="1min"
+                    android:textSize="14dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5min"
+                    android:textSize="14dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="20min"
+                    android:textSize="14dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1h"
+                    android:textSize="14dp" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/radioGroup"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="Jednom kada pritisnete SPREMI, izmjene ocijenjenjih kategorija neće biti moguće."
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/saveRatings"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="cursive"
+                android:text="Made with ❤"
+                android:textColor="?colorSecondary"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/findItOnMap"
+                android:layout_alignStart="@+id/findItOnMap"
+                android:layout_alignEnd="@+id/findItOnMap"
+                android:layout_marginStart="-10dp"
+                android:layout_marginEnd="-10dp"
+                android:gravity="center"
+                android:text="Prikaži na karti"
+                android:textSize="10dp" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/button2"
+        android:layout_width="40dp"
+        android:layout_height="39dp"
+        android:layout_margin="10dp"
+        android:alpha="0.7"
+        android:background="@drawable/circle_37"
+        android:backgroundTint="?colorOnSecondary"
+        android:padding="4dp"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_close_35dp"
+        app:tint="@color/orange" />
+</androidx.constraintlayout.widget.ConstraintLayout>

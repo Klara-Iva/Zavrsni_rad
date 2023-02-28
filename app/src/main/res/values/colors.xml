@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="orange">#E7766B</color>
+    <color name="beige">#f8f7f2</color>
+    <color name="light_beige">#F6F3F0</color>
+    <color name="dark_gray">#1E1E1E</color>
+    <color name="orange_variant">#BF645C</color>
+    <color name="light_gray">#B3B3B3</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background_gray">#353535</color>
+    <color name="idk">#DFDAD8</color>
+</resources>

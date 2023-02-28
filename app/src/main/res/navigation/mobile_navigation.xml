@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+
+    app:startDestination="@+id/navigation_map">
+
+    <fragment
+        android:id="@+id/navigation_map"
+        android:name="com.example.zavrsni_rad.ui.map.MapFragment"
+        android:label="Karta"
+        tools:layout="@layout/fragment_home"
+        />
+
+    <fragment
+        android:id="@+id/preferences"
+        android:name="com.example.zavrsni_rad.ui.preferences.PreferencesFragment"
+        android:label="Preferencije"
+        tools:layout="@layout/fragment_preferences" />
+
+
+    <fragment
+        android:id="@+id/navigation_ranking"
+        android:name="com.example.zavrsni_rad.ui.rank.LocationRankingFragment"
+        android:label="Rank"
+        tools:layout="@layout/fragment_location_ranking" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.zavrsni_rad.ui.profile.ProfileFragment"
+        android:label="Profil"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

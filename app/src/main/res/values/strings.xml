@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Virovitički turistički vodič</string>
+
+
+    <string-array name="categories">
+        <item>zanimljivost</item>
+        <item>pristupačnost</item>
+        <item>orginalnost</item>
+        <item>fotogeničnost</item>
+        <item>vremenski zahtjevno</item>
+
+    </string-array>
+</resources>

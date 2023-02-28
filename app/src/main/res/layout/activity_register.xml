@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/imageView25"
+        android:layout_width="327dp"
+        android:layout_height="383dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-139dp"
+        android:layout_marginTop="-170dp"
+        app:srcCompat="@drawable/circle_37"
+        app:tint="@color/orange" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="366dp"
+        android:layout_height="373dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-139dp"
+        android:layout_marginBottom="-88dp"
+        app:srcCompat="@drawable/circle_37"
+        app:tint="#BA928E" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="299dp"
+        android:layout_height="278dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="-90dp"
+        app:srcCompat="@drawable/circle_37"
+        app:tint="#A58380" />
+
+    <ImageView
+        android:id="@+id/imageView26"
+        android:layout_width="327dp"
+        android:layout_height="383dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-41dp"
+        android:layout_marginTop="-230dp"
+        app:srcCompat="@drawable/circle_37"
+        app:tint="@color/orange_variant" />
+
+    <ImageView
+        android:id="@+id/imageView27"
+        android:layout_width="249dp"
+        android:layout_height="195dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="-85dp"
+        app:tint="@color/orange_variant"
+        app:srcCompat="@drawable/circle_37" />
+
+    <ImageView
+        android:id="@+id/imageView28"
+        android:layout_width="290dp"
+        android:layout_height="292dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="-150dp"
+
+        app:srcCompat="@drawable/circle_37"
+        app:tint="#A16C6C" />
+
+
+    <EditText
+        android:id="@+id/passwordregister"
+        android:layout_width="260dp"
+        android:layout_height="48dp"
+
+        android:layout_below="@+id/emailregister"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="lozinka"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailregister" />
+
+    <EditText
+        android:id="@+id/emailregister"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/yourname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="email@gmail.com"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yourname" />
+
+    <EditText
+        android:id="@+id/yourname"
+        android:layout_width="260dp"
+
+
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView11"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:hint="ime"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+
+        android:textColor="?colorSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/registerButtonMain"
+        android:layout_width="229dp"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/textView17"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="registracija"
+        android:textSize="16dp"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordregister" />
+
+    <Button
+        android:id="@+id/loginButtonSide"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="31dp"
+        android:text="prijavi se"
+        android:textSize="14dp"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordregister" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="60dp"
+        android:alpha="1"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="izradi novi račun!"
+        android:textAlignment="center"
+        android:textColor="?colorSecondary"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/loginButtonSide"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="Ipak nisi ovdje prvi put?"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordregister"
+        android:layout_alignStart="@+id/passwordregister"
+        android:layout_alignEnd="@+id/passwordregister"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:text="Lozinka mora sadržavati barem jedno slovo i barem jedan broj. Minimalna dužina je 8 znakova."
+        android:textSize="11dp" />
+
+
+</RelativeLayout>

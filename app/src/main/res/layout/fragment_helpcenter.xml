@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="0dp"
+
+    tools:layout_editor_absoluteY="-16dp">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView31"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-75dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/dialog2"
+        app:tint="@color/orange_variant"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView31"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:elegantTextHeight="true"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="Help Centar"
+        android:textAlignment="gravity"
+        android:textAllCaps="true"
+        android:textColor="?colorOnSecondary"
+        android:textSize="21dp" />
+
+    <EditText
+        android:id="@+id/userInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView19"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:ems="30"
+        android:foregroundTintMode="screen"
+        android:gravity="top"
+        android:hint="Pišite ovdje...."
+        android:inputType="textMultiLine" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/sendHelpMessage"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/userInput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="POŠALJI"
+        android:textSize="16dp"
+        app:cornerRadius="20dp" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView31"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:text="U slučaju problema, ovdje nam možete javiti što se dogodilo, a mi ćemo pokušati što prije to ispraviti. U slučaju da imate pohvale ovdje ih također možete napisati. Unaprijed hvala!" />
+
+    <ImageView
+        android:id="@+id/closeimage"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/imageView31"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        app:srcCompat="@drawable/ic_baseline_close_35dp"
+        app:tint="?colorOnSecondary" />
+
+</RelativeLayout>
+</ScrollView>

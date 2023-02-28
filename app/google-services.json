@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "634581551024",
+    "project_id": "zavrsni-rad-a68e6",
+    "storage_bucket": "zavrsni-rad-a68e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634581551024:android:b2dff073d7a5bb481df875",
+        "android_client_info": {
+          "package_name": "com.example.zavrsni_rad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634581551024-b4doi0birftgu9nks14nq11kjeqjb1hi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPnZwxIr4z5RPW6468LYE7VJVMu2FREGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634581551024-b4doi0birftgu9nks14nq11kjeqjb1hi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

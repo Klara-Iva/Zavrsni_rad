@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_map"
+        android:icon="@drawable/ic_baseline_map_24"
+        android:title="Karta"
+        />
+
+    <item
+        android:id="@+id/preferences"
+        android:icon="@drawable/ic_baseline_toggle_on_24"
+        android:title="Preferencije" />
+
+    <item
+        android:id="@+id/navigation_ranking"
+        android:icon="@drawable/ic_baseline_format_list_numbered_24"
+        android:title="Rank" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Profil" />
+</menu>
