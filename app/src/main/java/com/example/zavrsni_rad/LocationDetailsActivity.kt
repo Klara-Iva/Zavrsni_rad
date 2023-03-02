@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.iterator
 import com.bumptech.glide.Glide
 import com.example.zavrsni_rad.ui.map.CameraBounds
+import com.example.zavrsni_rad.ui.rank.SavedStates
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.chip.Chip
@@ -33,17 +34,14 @@ class LocationDetailsActivity: AppCompatActivity() {
         val description = findViewById<TextView>(R.id.description)
         val image1 = findViewById<ImageView>(R.id.image1)
         val image2 = findViewById<ImageView>(R.id.image2)
-        val category2=findViewById<Chip>(R.id.chip44)
-        val docRef = db.collection("places").document(id!!)
+         val docRef = db.collection("places").document(id!!)
         docRef.get()
             .addOnSuccessListener { document ->
                 name.text = document?.data!!["name"].toString()
                 description.text = document.data!!["description"].toString()
                 Glide.with(this).load(document.data!!["image1"]).into(image1)
                 Glide.with(this).load(document.data!!["image2"]).into(image2)
-                category2.setText(document.data!!["category"].toString())
-                category2.isChecked=true
-                category2.isCheckable=false
+
 
                 updateAllAverages(id)
             }
@@ -72,6 +70,7 @@ val fave=findViewById<ImageView>(R.id.faveourite)
                     CameraBounds.camerapostion=camerapostion
                     CameraBounds.showSpecifiedLocationOnMap = true
                     CameraBounds.setCoordinates(latitude,longitude)
+                    SavedStates.setnavigationBarIndex(0)
                     val intent = Intent(this, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     startActivity(intent)

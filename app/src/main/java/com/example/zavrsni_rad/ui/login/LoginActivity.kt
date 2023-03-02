@@ -8,7 +8,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.zavrsni_rad.MainActivity
 import com.example.zavrsni_rad.R
+import com.example.zavrsni_rad.ui.map.CameraBounds
 import com.example.zavrsni_rad.ui.preferences.SavedUserChips
+import com.example.zavrsni_rad.ui.rank.SavedStates
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -23,6 +27,10 @@ class LoginActivity:AppCompatActivity() {
         overridePendingTransition(0, 0)
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
+        SavedStates.setSpinnerIndex(0)
+        SavedUserChips.list.clear()
+        CameraBounds.camerapostion=
+            CameraPosition.fromLatLngZoom(LatLng(45.832995, 17.385692),13.7f)
 
         val user = Firebase.auth.currentUser
         if(user != null){

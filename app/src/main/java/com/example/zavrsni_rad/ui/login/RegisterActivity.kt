@@ -9,6 +9,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.zavrsni_rad.MainActivity
 import com.example.zavrsni_rad.R
+import com.example.zavrsni_rad.ui.map.CameraBounds
+import com.example.zavrsni_rad.ui.preferences.SavedUserChips
+import com.example.zavrsni_rad.ui.rank.SavedStates
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -18,7 +23,7 @@ import com.google.firebase.ktx.Firebase
 class RegisterActivity: AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
-
+//TODO stvari se ne restiraju ako se korisnik prijavi a zatim drugi logina, ostanu stari chipovi i mapa ostane na zadnjem korisniku
 
 
 
@@ -99,8 +104,9 @@ class RegisterActivity: AppCompatActivity() {
                     }
                     val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("registration","true" )
+                    SavedStates.setnavigationBarIndex(1)
                     startActivity(intent)
-                    Toast.makeText(this,"Uspješna registracija",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"Uspješna prijava",Toast.LENGTH_SHORT).show()
                     finish()
 
                 }

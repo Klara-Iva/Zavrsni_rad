@@ -68,10 +68,7 @@ if(newUser=="true") {
 
             }
 
-            // An optional method that will be fired whenever an already selected tab has been selected again.
-            override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
-                Toast.makeText(baseContext, "Uživate u aplikaciji?", Toast.LENGTH_SHORT).show()
-            }
+
         })
     }
 
@@ -100,6 +97,7 @@ if(newUser=="true") {
     }
 
     fun loadFragmentByIndex(index:Int){
+        SavedStates.setnavigationBarIndex(index)
         when(index){
             0-> {
                 loadFragment(MapFragment())
