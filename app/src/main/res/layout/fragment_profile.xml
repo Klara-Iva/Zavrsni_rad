@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -73,7 +74,7 @@
         android:layout_marginTop="121dp"
         android:layout_marginBottom="20dp"
         android:layout_toEndOf="@+id/imageView3"
-        android:text="TVOJ KORISNIČKI RAČUN: "
+        android:text="KORISNIČKI RAČUN: "
         android:textAlignment="textStart"
         android:textColor="?colorSecondary"
         android:textSize="14dp" />
@@ -107,10 +108,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/showemail"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="43dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
-        android:text="zaboravili ste zaporku?"
-        android:textSize="16dp" />
+        android:layout_marginEnd="30dp"
+        android:text="zaboravili ste zaporku?\nPristikom na 'Pošalji upute' poslat će se email s uputama za resetiranje lozinke na vašu email adresu."
+        android:textSize="16dp"
+        android:justificationMode="inter_word"/>
 
     <Button
         android:id="@+id/logout"
@@ -133,7 +137,7 @@
         android:layout_below="@+id/resetPasswordButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="Tvoj broj ocijenjenih lokacija:"
+        android:text="Vaš broj ocijenjenih lokacija:"
         android:textSize="14dp" />
 
     <TextView
@@ -154,7 +158,7 @@
         android:layout_below="@id/textView8"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
-        android:text="POSTAVI NOVU LOZINKU"
+        android:text="POšalji upute"
         android:textSize="14dp"
         app:cornerRadius="20dp" />
 

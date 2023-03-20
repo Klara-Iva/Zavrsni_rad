@@ -81,9 +81,12 @@ class LocationRankingFragment:Fragment() {
         val lista: ArrayList<MyLocation> = ArrayList()
         for (chip in selectedChips) {
             for (data in initialLocationList) {
-                if (data.category.contains(chip))
+                for(data2 in data.category){
+                if (data2==chip)
+                    if(!lista.contains(data))
                     lista.add(data)
-            }
+
+            }}
         }
         changingLocationList = lista
         performSort()

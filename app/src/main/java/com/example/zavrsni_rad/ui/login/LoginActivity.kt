@@ -1,14 +1,18 @@
 package com.example.zavrsni_rad.ui.login
 
 import android.content.Intent
+import android.graphics.Paint
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.zavrsni_rad.MainActivity
 import com.example.zavrsni_rad.R
 import com.example.zavrsni_rad.ui.map.CameraBounds
+import com.example.zavrsni_rad.ui.popup.PasswordResetPopUp
+import com.example.zavrsni_rad.ui.popup.PopUpFragment
 import com.example.zavrsni_rad.ui.preferences.SavedUserChips
 import com.example.zavrsni_rad.ui.rank.SavedStates
 import com.google.android.gms.maps.model.CameraPosition
@@ -62,7 +66,16 @@ class LoginActivity:AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+            val pass=findViewById<TextView>(R.id.forgotPassword)
+            pass.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            pass.setOnClickListener {
+                val showPopUp = PasswordResetPopUp()
+                showPopUp.show(supportFragmentManager, "showPopUp")
+
+
+            }
         }
+
     }
 
     fun login(email: String, password: String){

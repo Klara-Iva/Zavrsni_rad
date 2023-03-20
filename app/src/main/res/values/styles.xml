@@ -3,7 +3,7 @@
 
     <style name="roundImageView">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">80dp</item>
+        <item name="cornerSize">75dp</item>
         <item name="color">#00FFFFFF</item>
 
     </style>

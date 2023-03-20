@@ -3,7 +3,7 @@ package com.example.zavrsni_rad
 data class MyLocation(
     var id:String="",
     var name:String="",
-    var category:String="",
+    var category:ArrayList<String> = arrayListOf(),
     var latitude:Double?=null,
     var longitude:Double?=null,
     var image1:String="",

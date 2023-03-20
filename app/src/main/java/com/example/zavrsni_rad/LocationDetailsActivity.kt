@@ -3,6 +3,9 @@ package com.example.zavrsni_rad
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.Html
+import android.text.method.LinkMovementMethod
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.iterator
@@ -11,19 +14,17 @@ import com.example.zavrsni_rad.ui.map.CameraBounds
 import com.example.zavrsni_rad.ui.rank.SavedStates
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.material.chip.Chip
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.DecimalFormat
 
 
-
 class LocationDetailsActivity: AppCompatActivity() {
     private val db = Firebase.firestore
     private val user = Firebase.auth.currentUser
     var TimeWorthButtoIsChecked:Boolean= false
-    @SuppressLint("SetTextI18n", "MissingInflatedId")
+    @SuppressLint("SetTextI18n", "MissingInflatedId", "SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(0, 0)
         super.onCreate(savedInstanceState)
@@ -46,14 +47,7 @@ class LocationDetailsActivity: AppCompatActivity() {
                 updateAllAverages(id)
             }
 
-val fave=findViewById<ImageView>(R.id.faveourite)
-        fave.setOnClickListener{
-            Toast.makeText(
-                this,
-                "Uvjereni smo da ti je omiljena lokacija, ali ovo još nije dostupno.",
-                Toast.LENGTH_LONG
-            ).show()
-        }
+
 
         val findOnMap=findViewById<ImageView>(R.id.findItOnMap)
         findOnMap.setOnClickListener{
@@ -160,9 +154,17 @@ val fave=findViewById<ImageView>(R.id.faveourite)
                     db.collection("places").document(id).get().addOnSuccessListener { document ->
                         var timeWorthCount = document.data!!["timeWorthCount"].toString().toDouble()
                         var timeWorthSum = document.data!!["timeWorthSum"].toString().toDouble()
-                        timeWorthSum += timeworth
-                        timeWorthCount += 1
-                        val average: Double = timeWorthSum / timeWorthCount / 60
+                        val average:Double
+                        if(timeWorthSum==0.0){
+                            timeWorthSum = timeworth
+                            timeWorthCount = 1.0
+                            average = timeworth/60
+                        }
+                        else {
+                            timeWorthSum += timeworth
+                            timeWorthCount += 1
+                            average = timeWorthSum / timeWorthCount / 60
+                        }
                         findViewById<RadioButton>(R.id.radioButton).setClickable(false)
                         findViewById<RadioButton>(R.id.radioButton2).setClickable(false)
                         findViewById<RadioButton>(R.id.radioButton3).setClickable(false)
@@ -189,6 +191,23 @@ val fave=findViewById<ImageView>(R.id.faveourite)
         backButton?.setOnClickListener {
             finish()
         }
+        val web = findViewById<TextView>(R.id.HyperText)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                val WEB = document?.data!!["link"].toString()
+                if(WEB=="null")
+                    web.visibility = View.GONE
+                else{
+                val linkedText = "Više informacija pronađite:  " +
+                            java.lang.String.format("<a href=\"%s\">ovdje</a> ", WEB)
+
+                    web.setText(Html.fromHtml(linkedText))
+                    web.setMovementMethod(LinkMovementMethod.getInstance())
+
+        }}
+
+
+
    }
 
     @SuppressLint("SetTextI18n")  //sluzi samo za updateanje na viewvu
@@ -225,13 +244,46 @@ val fave=findViewById<ImageView>(R.id.faveourite)
     }
 
     fun updateRating(rating:RatingBar, id:String,category:String){
+
         if (rating.rating.toString() != "0.0" && !rating.isIndicator) {
             db.collection("places").document(id).get().addOnSuccessListener { document ->
                 var Count = document.data!!["${category}"+ "Count"].toString().toDouble()
                 var Sum = document.data!!["${category}"+"Sum"].toString().toDouble()
-                Sum+=rating.rating.toDouble()
-                Count+=1
-                var average:Double=Sum/Count
+                if(Sum==0.0){
+                checkIfSumRatingIsZero(rating,id,category,Sum)
+                }
+                else {
+                    Sum += rating.rating.toDouble()
+                    Count += 1
+                    var average: Double = Sum / Count
+                    user?.let {
+                        db.collection("users")
+                            .document(it.uid).collection("documents")
+                            .document("${id}")
+                            .update("${category}" + "Rating", rating.rating.toDouble())
+                    }
+                    rating.setIsIndicator(true)
+                    db.collection("places").document(id).update(
+                        "${category}" + "Sum", Sum,
+                        "${category}" + "Count", Count,
+                        "${category}" + "Average", average
+                    )
+                        .addOnSuccessListener {
+                            Toast.makeText(
+                                this,
+                                "Spremljeno!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    updateAllAverages(id)
+                }
+            }
+        }
+    }
+
+    fun checkIfSumRatingIsZero(rating:RatingBar, id:String,category:String,Sum:Double){
+
+             val sum=rating.rating.toDouble()
                 user?.let {
                     db.collection("users")
                         .document(it.uid).collection("documents")
@@ -240,13 +292,14 @@ val fave=findViewById<ImageView>(R.id.faveourite)
                 }
                 rating.setIsIndicator(true)
                 db.collection("places").document(id).update(
-                    "${category}"+"Sum", Sum,
-                    "${category}"+"Count", Count,
-                    "${category}"+"Average", average
+                    "${category}"+"Sum", sum,
+                    "${category}"+"Count", 1,
+                    "${category}"+"Average", sum
                 )
                     .addOnSuccessListener { Toast.makeText(this,"Spremljeno!", Toast.LENGTH_SHORT).show() }
                 updateAllAverages(id)
-            }
-        }
     }
+
+
 }
+

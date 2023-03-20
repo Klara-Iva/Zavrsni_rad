@@ -78,7 +78,7 @@ class RegisterActivity: AppCompatActivity() {
                     val data = hashMapOf(
                         "name" to name
                     )
-                    auth.currentUser?.uid?.let {
+                    user?.uid?.let {
                         db.collection("users").document(it)
                             .collection("documents")
                             .document("user-info").set(data)

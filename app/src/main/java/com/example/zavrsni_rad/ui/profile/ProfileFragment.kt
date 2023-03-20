@@ -73,17 +73,20 @@ class ProfileFragment:Fragment() {
                 }
             }
         }
+
          val resetPasswordButton=view.findViewById<Button>(R.id.resetPasswordButton)
         resetPasswordButton.setOnClickListener{
-            Toast.makeText(context,"Not yet implemented",
-                Toast.LENGTH_SHORT).show()
+            FirebaseAuth.getInstance().sendPasswordResetEmail(user?.email.toString())
+            Toast.makeText(context,"Provjerite sandučić pošte!",
+                Toast.LENGTH_LONG).show()
         }
 
 
         val text=view.findViewById<TextView>(R.id.aboutApp)
              text.setOnClickListener{
-                 Toast.makeText(context,"Not yet implemented",
-                    Toast.LENGTH_SHORT).show()
+                 val fragmentTransaction: FragmentTransaction?= activity?.supportFragmentManager?.beginTransaction()
+                 fragmentTransaction?.replace(R.id.container, AboutAppFragment())
+                 fragmentTransaction?.commit()
         }
         val helpCenter=view.findViewById<TextView>(R.id.helpCenter)
         helpCenter.setOnClickListener{
