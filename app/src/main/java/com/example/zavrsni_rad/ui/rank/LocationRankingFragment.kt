@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zavrsni_rad.MyLocation
 import com.example.zavrsni_rad.R
+import com.example.zavrsni_rad.ui.popup.PasswordResetPopUp
+import com.example.zavrsni_rad.ui.popup.SpinnerInstructionsPopUp
 import com.example.zavrsni_rad.ui.preferences.SavedUserChips
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore

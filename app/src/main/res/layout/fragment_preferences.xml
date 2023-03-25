@@ -156,7 +156,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Odaberite sve kategorije za koje mislite da bi Vas mogle zanimati jer će se na temelju njih stvoriti prepouka za turistička odredišta. \n\nPromjena kategorija moguća je u bilo kojem trenutku."
+            android:text="Odaberite sve kategorije za koje mislite da bi Vas mogle zanimati jer će se na temelju njih stvoriti prepouke za turistička odredišta. \n\nPromjena kategorija moguća je u bilo kojem trenutku."
             android:textColor="?colorSecondary"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -244,6 +244,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="umjetnost"
+                android:textSize="14dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/umjetnost2"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sport"
                 android:textSize="14dp" />
 
         </com.google.android.material.chip.ChipGroup>

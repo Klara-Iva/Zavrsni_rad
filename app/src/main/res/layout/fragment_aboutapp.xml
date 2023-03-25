@@ -41,21 +41,51 @@
             android:textSize="21dp" />
 
 
-
-
-
-
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/aboutapptext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView31"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="100dp"
             android:layout_marginTop="20dp"
-            android:text="nesto o aplikaciji">
+            android:gravity="center"
+            android:text="Info about app"
+            android:textSize="16dp">
 
         </TextView>
+
+        <TextView
+            android:id="@+id/aboutme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/aboutapptext"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Info about app"
+            android:textSize="16dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/aboutapptext3"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/aboutme"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="90dp"
+            android:gravity="center"
+            android:text="Možete me kontaktirati mailom na: klaraiva19@gmail.com"
+            android:textSize="16dp">
+
+        </TextView>
+
         <ImageView
             android:id="@+id/closeimage"
             android:layout_width="wrap_content"

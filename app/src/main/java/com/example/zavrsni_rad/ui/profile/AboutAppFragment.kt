@@ -20,11 +20,13 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import org.w3c.dom.Text
 import java.time.Instant
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
 class AboutAppFragment:Fragment() {
+    private val db = Firebase.firestore
 
 
     @SuppressLint("MissingInflatedId")
@@ -34,12 +36,20 @@ class AboutAppFragment:Fragment() {
     ): View? {
         onStart()
         val view=inflater.inflate(R.layout.fragment_aboutapp,container, false )
-                val backButton = view.findViewById<ImageView>(R.id.closeimage)
+        val backButton = view.findViewById<ImageView>(R.id.closeimage)
         backButton?.setOnClickListener {
             val fragmentTransaction: FragmentTransaction?= activity?.supportFragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.container, ProfileFragment())
             fragmentTransaction?.commit()
         }
+        var aboutapp=view.findViewById<TextView>(R.id.aboutapptext)
+        var aboutme=view.findViewById<TextView>(R.id.aboutme)
+        db.collection("about").document("aboutapp").get().addOnSuccessListener {
+        aboutapp.text=it.data!!["text"].toString()
+            aboutme.text=it.data!!["aboutme"].toString()
+        }
+
+
 
         return view
     }

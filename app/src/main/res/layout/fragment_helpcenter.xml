@@ -79,7 +79,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
-        android:text="U slučaju problema, ovdje nam možete javiti što se dogodilo, a mi ćemo pokušati što prije to ispraviti. U slučaju da imate pohvale ovdje ih također možete napisati. Unaprijed hvala!" />
+        android:text="U slučaju problema, ovdje nam možete javiti što se dogodilo, a mi ćemo pokušati ispraviti to što prije. U slučaju da imate pohvale ovdje ih također možete napisati. Unaprijed hvala!" />
 
     <ImageView
         android:id="@+id/closeimage"

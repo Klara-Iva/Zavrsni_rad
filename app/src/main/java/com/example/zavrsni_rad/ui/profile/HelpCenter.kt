@@ -39,7 +39,7 @@ class HelpCenter:Fragment() {
         val btn=view.findViewById<Button>(R.id.sendHelpMessage)
         btn.setOnClickListener {
             val message=view.findViewById<EditText>(R.id.userInput)
-
+if(!message.text.isNullOrEmpty()){
             user?.let {
                 db.collection("helpCenter")
                     .document(it.uid).get()
@@ -76,6 +76,10 @@ class HelpCenter:Fragment() {
                     }
             }
         }}}
+        else{
+            Toast.makeText(context,"Nema unosa!",Toast.LENGTH_SHORT).show()
+        }
+        }
 
         val backButton = view.findViewById<ImageView>(R.id.closeimage)
         backButton?.setOnClickListener {

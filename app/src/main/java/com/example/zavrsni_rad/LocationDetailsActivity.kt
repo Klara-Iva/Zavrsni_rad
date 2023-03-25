@@ -8,6 +8,7 @@ import android.text.method.LinkMovementMethod
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isEmpty
 import androidx.core.view.iterator
 import com.bumptech.glide.Glide
 import com.example.zavrsni_rad.ui.map.CameraBounds
@@ -24,6 +25,7 @@ class LocationDetailsActivity: AppCompatActivity() {
     private val db = Firebase.firestore
     private val user = Firebase.auth.currentUser
     var TimeWorthButtoIsChecked:Boolean= false
+    var NothingSelected:Boolean=true
     @SuppressLint("SetTextI18n", "MissingInflatedId", "SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(0, 0)
@@ -124,7 +126,11 @@ class LocationDetailsActivity: AppCompatActivity() {
                     .document(it.uid).collection("documents")
                     .document("${id}").get()
                     .addOnSuccessListener { it2 ->
-                    if (!it2.exists()) {
+                    if (!it2.exists() && (excitementRating.rating.toDouble()!=0.0 || accessibilityRating.rating.toDouble()!=0.0
+                        && originalityRating.rating.toDouble()!=0.0 || photogenicRating.rating.toDouble()!=0.0
+                                || timeWorthRadioButtonGroup.checkedRadioButtonId!=-1
+                                )
+                    ) {
                         val data = hashMapOf(
                             "exists" to "true"
                         )
@@ -133,7 +139,8 @@ class LocationDetailsActivity: AppCompatActivity() {
                             .document("${id}").set(data) }
                     }
                 }
-            }
+                    .addOnSuccessListener {
+
             updateRating(excitementRating, id, "excitement")
             updateRating(accessibilityRating, id, "accessibility")
             updateRating(originalityRating, id, "originality")
@@ -158,7 +165,12 @@ class LocationDetailsActivity: AppCompatActivity() {
                         if(timeWorthSum==0.0){
                             timeWorthSum = timeworth
                             timeWorthCount = 1.0
+                            if(timeworth<60){
+                                average=timeworth/100
+                            }
+                            else{
                             average = timeworth/60
+                            }
                         }
                         else {
                             timeWorthSum += timeworth
@@ -184,6 +196,8 @@ class LocationDetailsActivity: AppCompatActivity() {
                         updateAllAverages(id)
                     }
                 }
+            }
+                    }
             }
             updateAllAverages(id)
         }
@@ -220,17 +234,48 @@ class LocationDetailsActivity: AppCompatActivity() {
         val docRef = db.collection("places").document(id)
         docRef.get()
             .addOnSuccessListener { document ->
-                excitementAverage?.text =
-                    "("+DecimalFormat("#.00").format(document.data!!["excitementAverage"]) + ") ⭐"
-                accessibilityAverage?.text =
-                    "("+ DecimalFormat("#.00").format(document.data!!["accessibilityAverage"]) + ") ⭐"
-                originalityAverage?.text =
-                    "("+DecimalFormat("#.00").format(document.data!!["originalityAverage"]) + ") ⭐"
-                photogenicAverage?.text =
-                    "("+DecimalFormat("#.00").format(document.data!!["photogenicAverage"]) + ") ⭐"
+                if(document.data!!["excitementAverage"].toString()=="0.0"){
+                    excitementAverage?.text ="(0.00) ⭐"
+
+                }
+                else {
+                    excitementAverage?.text =
+                        "(" + DecimalFormat("#.00").format(document.data!!["excitementAverage"]) + ") ⭐"
+
+                }
+                if(document.data!!["accessibilityAverage"].toString()=="0.0"){
+                    accessibilityAverage?.text ="(0.00) ⭐"
+
+                }
+                else {
+                    accessibilityAverage?.text =
+                        "(" + DecimalFormat("#.00").format(document.data!!["accessibilityAverage"]) + ") ⭐"
+
+                }
+                if(document.data!!["originalityAverage"].toString()=="0.0"){
+                    originalityAverage?.text ="(0.00) ⭐"
+
+                }
+                else {
+                    originalityAverage?.text =
+                        "(" + DecimalFormat("#.00").format(document.data!!["originalityAverage"]) + ") ⭐"
+
+                }
+                if(document.data!!["photogenicAverage"].toString()=="0.0"){
+                    photogenicAverage?.text ="(0.00) ⭐"
+
+                }
+                else {
+                    photogenicAverage?.text =
+                        "(" + DecimalFormat("#.00").format(document.data!!["photogenicAverage"]) + ") ⭐"
+
+                }
                 val initalNumber=document.data!!["timeWorthAverage"].toString().toDouble()
-                if(initalNumber<1.0)
-                    timeWorthAverage?.text =(initalNumber*100).toString()+" sek"
+                if(initalNumber==0.0){
+                    timeWorthAverage?.text ="0.0 sek"
+                }
+                else if(initalNumber<1.0)
+                    timeWorthAverage?.text =DecimalFormat("#.00").format(initalNumber*100).toString()+" sek"
                 else{
                     var ostatak=initalNumber-(initalNumber.toInt().toDouble())
                     ostatak=ostatak*60/100
@@ -241,6 +286,8 @@ class LocationDetailsActivity: AppCompatActivity() {
             .addOnFailureListener {
                 Toast.makeText(this, "Loading failed", Toast.LENGTH_LONG).show()
             }
+
+
     }
 
     fun updateRating(rating:RatingBar, id:String,category:String){
@@ -283,7 +330,7 @@ class LocationDetailsActivity: AppCompatActivity() {
 
     fun checkIfSumRatingIsZero(rating:RatingBar, id:String,category:String,Sum:Double){
 
-             val sum=rating.rating.toDouble()
+             val sum: Double =rating.rating.toDouble()
                 user?.let {
                     db.collection("users")
                         .document(it.uid).collection("documents")

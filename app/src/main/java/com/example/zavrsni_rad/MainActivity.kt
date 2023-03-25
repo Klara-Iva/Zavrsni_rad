@@ -1,23 +1,22 @@
 package com.example.zavrsni_rad
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.Spinner
-import android.widget.Toast
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.zavrsni_rad.ui.map.MapFragment
 import com.example.zavrsni_rad.ui.popup.PopUpFragment
+import com.example.zavrsni_rad.ui.popup.SpinnerInstructionsPopUp
 import com.example.zavrsni_rad.ui.preferences.PreferencesFragment
 import com.example.zavrsni_rad.ui.preferences.SavedUserChips
 import com.example.zavrsni_rad.ui.profile.ProfileFragment
 import com.example.zavrsni_rad.ui.rank.LocationRankingFragment
 import com.example.zavrsni_rad.ui.rank.SavedStates
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import nl.joery.animatedbottombar.AnimatedBottomBar
+
 
 class MainActivity : AppCompatActivity() {
     private val user = Firebase.auth.currentUser
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         bottom_bar.selectTabAt(SavedStates.navigationBarIndex)
         loadFragmentByIndex(navigationBarIndex)
-        val newUser: String? =intent.getStringExtra("registration")
+        var newUser: String? =intent.getStringExtra("registration")
 
 
         user?.let {
@@ -50,7 +49,6 @@ class MainActivity : AppCompatActivity() {
 if(newUser=="true") {
     val showPopUp = PopUpFragment()
     showPopUp.show(supportFragmentManager, "showPopUp")
-    //navigationBarIndex = 1
     loadFragmentByIndex(navigationBarIndex)
     bottom_bar.selectTabAt(SavedStates.navigationBarIndex)
 
@@ -62,7 +60,11 @@ if(newUser=="true") {
                 newIndex: Int,
                 newTab: AnimatedBottomBar.Tab
             ) {
-                //navigationBarIndex=newIndex
+                if(newIndex==2 && newUser=="true"){
+                    val showPopUp = SpinnerInstructionsPopUp()
+                    showPopUp.show(supportFragmentManager, "showPopUp")
+                    newUser="false"
+                }
                 SavedStates.setnavigationBarIndex(newIndex)
                 loadFragmentByIndex(newIndex)
 

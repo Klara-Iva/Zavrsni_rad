@@ -45,14 +45,29 @@ class LocationViewHolder (val view: View,val spinnerSelectedIndex:Int): Recycler
         }
         else numberRank.visibility = View.GONE
         when(spinnerSelectedIndex){
-            0->{averageGradeTextView?.text =
+            0->{if(location.excitementAverage.toString()=="0.0")
+                averageGradeTextView?.text ="(0.00) ⭐"
+                else{ averageGradeTextView?.text =
                 "("+ DecimalFormat("#.00").format(location.excitementAverage)+")⭐" }
-            1->{averageGradeTextView?.text =
-                "("+  DecimalFormat("#.00").format(location.accessibilityAverage)+")⭐" }
-            2->{averageGradeTextView?.text =
-                "("+  DecimalFormat("#.00").format(location.originalityAverage)+")⭐" }
-            3->{averageGradeTextView?.text =
-                "("+  DecimalFormat("#.00").format(location.photogenicAverage)+")⭐" }
+            }
+            1->{if(location.accessibilityAverage.toString()=="0.0")
+                averageGradeTextView?.text ="(0.00) ⭐"
+                else
+                averageGradeTextView?.text = "("+  DecimalFormat("#.00").format(location.accessibilityAverage)+")⭐"
+            }
+            2->{if(location.originalityAverage.toString()=="0.0")
+                averageGradeTextView?.text ="(0.00) ⭐"
+                else
+                averageGradeTextView?.text =
+                "("+  DecimalFormat("#.00").format(location.originalityAverage)+")⭐"
+            }
+            3->{
+                if(location.photogenicAverage.toString()=="0.0")
+                    averageGradeTextView?.text ="(0.00) ⭐"
+                else
+                averageGradeTextView?.text =
+                "("+  DecimalFormat("#.00").format(location.photogenicAverage)+")⭐"
+            }
             4->{
                 val initalNumber=location.timeWorthAverage!!.toDouble()
                 show(initalNumber)
@@ -61,8 +76,11 @@ class LocationViewHolder (val view: View,val spinnerSelectedIndex:Int): Recycler
     }
 
     fun show(initalNumber:Double) {
-        if(initalNumber<1.0)
-            averageGradeTextView?.text =(initalNumber*100).toString()+" sek"
+        if(initalNumber==0.0){
+            averageGradeTextView?.text ="0.0 sek"
+        }
+        else if(initalNumber<1.0)
+            averageGradeTextView?.text =DecimalFormat("#.00").format(initalNumber*100).toString()+" sek"
 
         else{
             var remainder=initalNumber-(initalNumber.toInt().toDouble())

@@ -88,37 +88,44 @@ class MapFragment:Fragment(), OnMapReadyCallback {
                 }
             }
 
-       // var i:Int=10
-/*
+       /*var i:Int=10
+
         val initalData = hashMapOf(
-            "name" to "ime",
-            "image1" to "url",
-            "image2" to "url",
-            "latitude" to 45.83,
-            "longitude" to 17.01,
-            "description" to "neki opis",
-            "category" to "umjetnost",
-            "originalitySum" to 3.0,
-            "originalityCount" to 1,
-            "originalityAverage" to 3.0,
-            "excitementSum" to 3.0,
-            "excitementCount" to 1,
-            "excitementAverage" to  3.0,
-            "accessibilitySum"  to 3.0,
-            "accessibilityCount" to 1,
-            "accessibilityAverage" to 3.0,
-            "photogenicSum" to 3.0,
-            "photogenicCount" to 1,
-            "photogenicAverage" to 3.0,
-            "timeWorthSum" to 60.0,
-            "timeWorthCount" to  1,
-            "timeWorthAverage" to 1.0,
+
+            "originalitySum" to 0.0,
+            "originalityCount" to 0,
+            "originalityAverage" to 0.0,
+            "excitementSum" to 0.0,
+            "excitementCount" to 0,
+            "excitementAverage" to  0.0,
+            "accessibilitySum"  to 0.0,
+            "accessibilityCount" to 0,
+            "accessibilityAverage" to 0.0,
+            "photogenicSum" to 0.0,
+            "photogenicCount" to 0,
+            "photogenicAverage" to 0.0,
+            "timeWorthSum" to 0.0,
+            "timeWorthCount" to  0,
+            "timeWorthAverage" to 0.0,
         )
-        db.collection("places").document("01").set(initalData)
-        while(i<=40) {
+        db.collection("places").document("01").update(initalData as Map<String, Any>)
+        db.collection("places").document("02").update(initalData as Map<String, Any>)
+        db.collection("places").document("03").update(initalData as Map<String, Any>)
+        db.collection("places").document("04").update(initalData as Map<String, Any>)
+        db.collection("places").document("05").update(initalData as Map<String, Any>)
+        db.collection("places").document("06").update(initalData as Map<String, Any>)
+        db.collection("places").document("07").update(initalData as Map<String, Any>)
+        db.collection("places").document("08").update(initalData as Map<String, Any>)
+        db.collection("places").document("09").update(initalData as Map<String, Any>)
+        while(i<=29) {
+            db.collection("places").document(i.toString()).update(initalData as Map<String, Any>)
 
             i++
         }*/
+
+
+
+
     }
 
 

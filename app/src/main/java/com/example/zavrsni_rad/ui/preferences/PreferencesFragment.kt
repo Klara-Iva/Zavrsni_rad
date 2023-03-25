@@ -28,6 +28,7 @@ class PreferencesFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view=inflater.inflate(R.layout.fragment_preferences,container, false )
+
         val chipGroup = view.findViewById<ChipGroup>(R.id.chipGroupCategories)
         chipTextArrayForSetup.addAll(SavedUserChips.getChips())
         setCheckedChips(view)

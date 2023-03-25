@@ -9,12 +9,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.zavrsni_rad.MainActivity
 import com.example.zavrsni_rad.R
-import com.example.zavrsni_rad.ui.map.CameraBounds
-import com.example.zavrsni_rad.ui.preferences.SavedUserChips
 import com.example.zavrsni_rad.ui.rank.SavedStates
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -23,7 +20,6 @@ import com.google.firebase.ktx.Firebase
 class RegisterActivity: AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
-//TODO stvari se ne restiraju ako se korisnik prijavi a zatim drugi logina, ostanu stari chipovi i mapa ostane na zadnjem korisniku
 
 
 
@@ -40,8 +36,21 @@ class RegisterActivity: AppCompatActivity() {
         val registerbutton = findViewById<Button>(R.id.registerButtonMain)
         registerbutton.setOnClickListener {
             if (email.text.isNotEmpty() && password.text.isNotEmpty() && userName.text.isNotEmpty()) {
-                if(email.text.length>=8)
-                    register(email.text.toString(), password.text.toString(), userName.text.toString())
+                if(password.text.length>=8){
+                    var str=password.text.toString()
+                    var hasNumbers=false
+                    var hasLetters=false
+                    for(char in str){
+                        if(char.isDigit()) hasNumbers=true
+                        if(char.isLetter()) hasLetters=true
+                    }
+                    if(hasNumbers && hasLetters)
+                       register(email.text.toString(), password.text.toString(), userName.text.toString())
+else{Toast.makeText(
+                        baseContext, "Lozinka ne sadrži barem jedno slovo i barem jedan broj",
+                        Toast.LENGTH_SHORT
+                    ).show()}
+                }
                 else
                     Toast.makeText(
                         baseContext, "Lozinka mora sadržavati bar 8 znakova",
@@ -66,6 +75,7 @@ class RegisterActivity: AppCompatActivity() {
 
 
     fun register(email: String, password: String, name: String){
+
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -106,13 +116,15 @@ class RegisterActivity: AppCompatActivity() {
                     intent.putExtra("registration","true" )
                     SavedStates.setnavigationBarIndex(1)
                     startActivity(intent)
-                    Toast.makeText(this,"Uspješna prijava",Toast.LENGTH_SHORT).show()
-                    finish()
+                      finish()
 
                 }
                 else {
-                  Toast.makeText(baseContext, "Pogreška u kreiranju računa", Toast.LENGTH_SHORT).show()
+                 Toast.makeText(baseContext, "Email već postoji ili je neispravan", Toast.LENGTH_SHORT).show()
                 }
             }
+
+        return
     }
+
 }
