@@ -35,6 +35,7 @@ class LocationViewHolder (val view: View,val spinnerSelectedIndex:Int): Recycler
         locationCategory.text = "  "+location.category+"  "
         locationCategory.isChecked=true
         locationCategory.isCheckable=false
+        medal.visibility=View.VISIBLE
         if(index==0){medal.setImageResource(R.drawable.medal_1st)}
         if(index==1){medal.setImageResource(R.drawable.medal_2nd)}
         if(index==2){medal.setImageResource(R.drawable.medal_3rd)}
@@ -43,7 +44,10 @@ class LocationViewHolder (val view: View,val spinnerSelectedIndex:Int): Recycler
             numberRank.visibility= View.VISIBLE
             numberRank.text= (index+1).toString()+"."
         }
-        else numberRank.visibility = View.GONE
+        else {
+            numberRank.visibility = View.GONE
+
+            }
         when(spinnerSelectedIndex){
             0->{if(location.excitementAverage.toString()=="0.0")
                 averageGradeTextView?.text ="(0.00) ⭐"

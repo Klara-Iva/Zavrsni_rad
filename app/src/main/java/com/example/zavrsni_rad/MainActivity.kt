@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         loadFragmentByIndex(navigationBarIndex)
         var newUser: String? =intent.getStringExtra("registration")
 
-
         user?.let {
             db.collection("users")
                 .document(user.uid).collection("documents")
@@ -51,7 +50,6 @@ if(newUser=="true") {
     showPopUp.show(supportFragmentManager, "showPopUp")
     loadFragmentByIndex(navigationBarIndex)
     bottom_bar.selectTabAt(SavedStates.navigationBarIndex)
-
 }
         bottom_bar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
             override fun onTabSelected(
@@ -67,10 +65,7 @@ if(newUser=="true") {
                 }
                 SavedStates.setnavigationBarIndex(newIndex)
                 loadFragmentByIndex(newIndex)
-
             }
-
-
         })
     }
 
