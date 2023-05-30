@@ -1,6 +1,6 @@
 package com.example.zavrsni_rad
 
-data class MyLocation(
+data class LocationData(
     var id:String="",
     var name:String="",
     var category:ArrayList<String> = arrayListOf(),
@@ -14,3 +14,4 @@ data class MyLocation(
     var photogenicAverage:Double?=null,
     var timeWorthAverage:Double?=null
 )
+

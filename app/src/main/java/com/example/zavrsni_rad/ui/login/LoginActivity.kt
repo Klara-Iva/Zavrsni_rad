@@ -1,3 +1,5 @@
+@file:Suppress("NAME_SHADOWING")
+
 package com.example.zavrsni_rad.ui.login
 
 import android.content.Intent
@@ -12,13 +14,11 @@ import com.example.zavrsni_rad.MainActivity
 import com.example.zavrsni_rad.R
 import com.example.zavrsni_rad.ui.map.CameraBounds
 import com.example.zavrsni_rad.ui.popup.PasswordResetPopUp
-import com.example.zavrsni_rad.ui.popup.PopUpFragment
 import com.example.zavrsni_rad.ui.preferences.SavedUserChips
 import com.example.zavrsni_rad.ui.rank.SavedStates
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -48,33 +48,34 @@ class LoginActivity:AppCompatActivity() {
             val email = findViewById<EditText>(R.id.editTextTextEmailAddress)
             val password = findViewById<EditText>(R.id.editTextTextPassword)
             val loginButton = findViewById<Button>(R.id.loginbuttonmain)
-            //login("blabla1@dummy.com","12345qwert")
 
             loginButton.setOnClickListener {
                 if (email.text.isNotEmpty() && password.text.isNotEmpty()) {
                     login(email.text.toString(), password.text.toString())
-                } else {
+                }
+                else {
                     Toast.makeText(
                         baseContext, "Molimo ispunite sva polja",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             }
+
+            val forgottenPasswordButton=findViewById<TextView>(R.id.forgotPassword)
+            forgottenPasswordButton.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            forgottenPasswordButton.setOnClickListener {
+                val showPopUp = PasswordResetPopUp()
+                showPopUp.show(supportFragmentManager, "showPopUp")
+            }
+
             val registerButton = findViewById<Button>(R.id.registerButtonSide)
             registerButton.setOnClickListener {
                 val intent = Intent(this, RegisterActivity::class.java)
                 startActivity(intent)
                 finish()
             }
-            val pass=findViewById<TextView>(R.id.forgotPassword)
-            pass.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-            pass.setOnClickListener {
-                val showPopUp = PasswordResetPopUp()
-                showPopUp.show(supportFragmentManager, "showPopUp")
-
-
-            }
         }
+        //login("blabla1@dummy.com","12345qwert")
 
     }
 
@@ -82,7 +83,6 @@ class LoginActivity:AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     Toast.makeText(this,"Uspješna prijava",Toast.LENGTH_SHORT).show()
@@ -95,7 +95,6 @@ class LoginActivity:AppCompatActivity() {
                     val password = findViewById<EditText>(R.id.editTextTextPassword)
                     email.text.clear()
                     password.text.clear()
-
                 }
             }
     }

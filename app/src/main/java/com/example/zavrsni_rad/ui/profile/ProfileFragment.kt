@@ -33,18 +33,20 @@ class ProfileFragment:Fragment() {
         onStart()
 
         val view=inflater.inflate(R.layout.fragment_profile,container, false )
-        val pozdrav = view.findViewById<TextView>(R.id.textView4)
+
+
+        val greeting = view.findViewById<TextView>(R.id.greetingText)
         user?.let {
             val email = it.email
-            val emailtext=view.findViewById<TextView>(R.id.showemail)
-            emailtext.text=email
+            val emailText=view.findViewById<TextView>(R.id.UserEmailText)
+            emailText.text=email
         }
 
         user?.let {   db.collection("users")
             .document(it.uid).collection("documents")
             .document("user-info").get()
             .addOnSuccessListener {
-                pozdrav.text = "Pozdrav, "+it.data!!["name"].toString()+"!"
+                greeting.text = "Pozdrav, "+it.data!!["name"].toString()+"!"
             }
         }
 
@@ -65,16 +67,16 @@ class ProfileFragment:Fragment() {
         countQuery?.get(AggregateSource.SERVER)?.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val snapshot = task.result
-               if(snapshot.count>2){
-                   gradedLocationsCounter.text= (snapshot.count-2).toString()
-               }
+                if(snapshot.count>2){
+                    gradedLocationsCounter.text= (snapshot.count-2).toString()
+                }
                 else{
-                   gradedLocationsCounter.text= "0"
+                    gradedLocationsCounter.text= "0"
                 }
             }
         }
 
-         val resetPasswordButton=view.findViewById<Button>(R.id.resetPasswordButton)
+        val resetPasswordButton=view.findViewById<Button>(R.id.resetPasswordButton)
         resetPasswordButton.setOnClickListener{
             FirebaseAuth.getInstance().sendPasswordResetEmail(user?.email.toString())
             Toast.makeText(context,"Provjerite sandučić pošte!",
@@ -83,10 +85,10 @@ class ProfileFragment:Fragment() {
 
 
         val text=view.findViewById<TextView>(R.id.aboutApp)
-             text.setOnClickListener{
-                 val fragmentTransaction: FragmentTransaction?= activity?.supportFragmentManager?.beginTransaction()
-                 fragmentTransaction?.replace(R.id.container, AboutAppFragment())
-                 fragmentTransaction?.commit()
+        text.setOnClickListener{
+            val fragmentTransaction: FragmentTransaction?= activity?.supportFragmentManager?.beginTransaction()
+            fragmentTransaction?.replace(R.id.container, AboutAppFragment())
+            fragmentTransaction?.commit()
         }
         val helpCenter=view.findViewById<TextView>(R.id.helpCenter)
         helpCenter.setOnClickListener{
@@ -100,7 +102,6 @@ class ProfileFragment:Fragment() {
     }
     public override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = user
         if(currentUser == null){
             Toast.makeText(context, "User not found.",

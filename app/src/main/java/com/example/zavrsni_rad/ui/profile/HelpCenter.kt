@@ -1,11 +1,9 @@
 package com.example.zavrsni_rad.ui.profile
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.os.Parcel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +13,6 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.zavrsni_rad.R
-import com.google.android.material.internal.ViewUtils.hideKeyboard
-import com.google.firebase.Timestamp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -36,36 +32,37 @@ class HelpCenter:Fragment() {
     ): View? {
         onStart()
         val view=inflater.inflate(R.layout.fragment_helpcenter,container, false )
-        val btn=view.findViewById<Button>(R.id.sendHelpMessage)
-        btn.setOnClickListener {
+        val sendHelpMessageButton=view.findViewById<Button>(R.id.sendHelpMessage)
+        sendHelpMessageButton.setOnClickListener {
             val message=view.findViewById<EditText>(R.id.userInput)
 if(!message.text.isNullOrEmpty()){
             user?.let {
+                val timevalue = DateTimeFormatter.ISO_INSTANT.format(Instant.now())
+                DateTimeFormatter
+                    .ofPattern("yyyy-MM-dd HH:mm:ss.SSSS")
+                    .withZone(ZoneOffset.systemDefault())
+                    .format(Instant.now())
+
+
+
                 db.collection("helpCenter")
-                    .document(it.uid).get()
+                    .document(timevalue).get()
                     .addOnSuccessListener { it2 ->
                         if (!it2.exists()) {
                             val data = hashMapOf(
                                 "exists" to "true"
                             )
-                            user.uid.let { it1 ->   db.collection("helpCenter")
-                                .document(it.uid).set(data) }
+                            user.uid.let {
+                                    it1 ->   db.collection("helpCenter")
+                                .document(timevalue).set(data) }
                         }
                     }
                     .addOnCompleteListener{
 
-
-           val timess = DateTimeFormatter.ISO_INSTANT.format(Instant.now())
-            DateTimeFormatter
-                .ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")
-                .withZone(ZoneOffset.systemDefault())
-                .format(Instant.now())
-
-
-             user?.let {
-                db.collection("helpCenter")
-                    .document(it.uid)
-                    .update(timess,message.text.toString())
+                        user?.let {
+                            db.collection("helpCenter")
+                    .document(timevalue)
+                    .update(it.uid,message.text.toString())
 
 
 

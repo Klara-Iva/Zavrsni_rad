@@ -326,7 +326,8 @@ class LocationDetailsActivity: AppCompatActivity() {
         }
     }
 
-    fun checkIfSumRatingIsZero(rating:RatingBar, id:String,category:String,Sum:Double){
+    @SuppressLint("SuspiciousIndentation")
+    fun checkIfSumRatingIsZero(rating:RatingBar, id:String, category:String, Sum:Double){
 
              val sum: Double =rating.rating.toDouble()
                 user?.let {

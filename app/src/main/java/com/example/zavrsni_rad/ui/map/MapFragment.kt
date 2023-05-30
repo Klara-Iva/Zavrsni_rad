@@ -37,10 +37,8 @@ class MapFragment:Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraBounds.getCameraPosition()))
-        mMap.setOnCameraMoveListener {
-            CameraBounds.setCameraPosition( mMap.cameraPosition)
-        }
-        val locations = mutableListOf<MyMarker>()
+        mMap.setOnCameraMoveListener { CameraBounds.setCameraPosition( mMap.cameraPosition) }
+        val locations = mutableListOf<MapMarker>()
         val docRef = db.collection("places")
         docRef.get()
             .addOnSuccessListener { documents ->
@@ -49,7 +47,7 @@ class MapFragment:Fragment(), OnMapReadyCallback {
                         document.data!!["latitude"].toString().toDouble(),
                         document.data!!["longitude"].toString().toDouble()
                     )
-                    locations.add(MyMarker(document.id, coordinates))
+                    locations.add(MapMarker(document.id, coordinates))
                 }
             }
             .addOnCompleteListener{
@@ -129,7 +127,7 @@ class MapFragment:Fragment(), OnMapReadyCallback {
     }
 
 
-    data class MyMarker(
+    data class MapMarker(
         var id: String,
         var cordinates: LatLng
     )

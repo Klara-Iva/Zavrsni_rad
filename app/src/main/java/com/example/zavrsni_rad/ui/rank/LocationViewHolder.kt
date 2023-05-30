@@ -4,10 +4,8 @@ import android.view.View
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.zavrsni_rad.MyLocation
+import com.example.zavrsni_rad.LocationData
 import com.example.zavrsni_rad.R
-import com.google.android.material.chip.Chip
-import org.checkerframework.checker.index.qual.GTENegativeOne
 import java.text.DecimalFormat
 
 class LocationViewHolder (val view: View,val spinnerSelectedIndex:Int): RecyclerView.ViewHolder(view)
@@ -18,8 +16,6 @@ class LocationViewHolder (val view: View,val spinnerSelectedIndex:Int): Recycler
         view.findViewById<TextView>(R.id.location_name)
     val averageGradeTextView =
         view.findViewById<TextView>(R.id.averageGrade)
-    val locationCategory =
-        view.findViewById<Chip>(R.id.chip33)
     val numberRank =
         view.findViewById<TextView>(R.id.rankingplace)
     val medal =
@@ -27,14 +23,11 @@ class LocationViewHolder (val view: View,val spinnerSelectedIndex:Int): Recycler
     @SuppressLint("SetTextI18n")
     fun bind(
         index: Int,
-        location: MyLocation
+        location: LocationData
     )
     {
         Glide.with(view.context).load(location.image2).into(locationImage)
         locationName.text = location.name
-        locationCategory.text = "  "+location.category+"  "
-        locationCategory.isChecked=true
-        locationCategory.isCheckable=false
         medal.visibility=View.VISIBLE
         if(index==0){medal.setImageResource(R.drawable.medal_1st)}
         if(index==1){medal.setImageResource(R.drawable.medal_2nd)}
@@ -47,30 +40,30 @@ class LocationViewHolder (val view: View,val spinnerSelectedIndex:Int): Recycler
         else {
             numberRank.visibility = View.GONE
 
-            }
+        }
         when(spinnerSelectedIndex){
             0->{if(location.excitementAverage.toString()=="0.0")
                 averageGradeTextView?.text ="(0.00) ⭐"
-                else{ averageGradeTextView?.text =
+            else{ averageGradeTextView?.text =
                 "("+ DecimalFormat("#.00").format(location.excitementAverage)+")⭐" }
             }
             1->{if(location.accessibilityAverage.toString()=="0.0")
                 averageGradeTextView?.text ="(0.00) ⭐"
-                else
+            else
                 averageGradeTextView?.text = "("+  DecimalFormat("#.00").format(location.accessibilityAverage)+")⭐"
             }
             2->{if(location.originalityAverage.toString()=="0.0")
                 averageGradeTextView?.text ="(0.00) ⭐"
-                else
+            else
                 averageGradeTextView?.text =
-                "("+  DecimalFormat("#.00").format(location.originalityAverage)+")⭐"
+                    "("+  DecimalFormat("#.00").format(location.originalityAverage)+")⭐"
             }
             3->{
                 if(location.photogenicAverage.toString()=="0.0")
                     averageGradeTextView?.text ="(0.00) ⭐"
                 else
-                averageGradeTextView?.text =
-                "("+  DecimalFormat("#.00").format(location.photogenicAverage)+")⭐"
+                    averageGradeTextView?.text =
+                        "("+  DecimalFormat("#.00").format(location.photogenicAverage)+")⭐"
             }
             4->{
                 val initalNumber=location.timeWorthAverage!!.toDouble()

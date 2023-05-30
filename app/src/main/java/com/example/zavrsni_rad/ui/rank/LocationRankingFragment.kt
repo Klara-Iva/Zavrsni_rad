@@ -7,41 +7,33 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.zavrsni_rad.MyLocation
+import com.example.zavrsni_rad.LocationData
 import com.example.zavrsni_rad.R
-import com.example.zavrsni_rad.ui.popup.PasswordResetPopUp
-import com.example.zavrsni_rad.ui.popup.SpinnerInstructionsPopUp
 import com.example.zavrsni_rad.ui.preferences.SavedUserChips
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
 class LocationRankingFragment:Fragment() {
     private val db = Firebase.firestore
-    private val user = Firebase.auth.currentUser
     private lateinit var recyclerAdapter: LocationRecyclerAdapter
-    var changingLocationList: ArrayList<MyLocation> = ArrayList()
-    var initialLocationList: ArrayList<MyLocation> = ArrayList()
+    var changingLocationList: ArrayList<LocationData> = ArrayList()
+    var initialLocationList: ArrayList<LocationData> = ArrayList()
     var spinnerIndex: Int = 0
     var selectedChips: ArrayList<String> = ArrayList()
-// TODO dodaj popup da se pokaze da je gore rangiranje
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_location_ranking, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycledviewer)
-
-
         db.collection("places")
             .get()
             .addOnSuccessListener { result ->
                 for (data in result.documents) {
-                    val singleLocationData = data.toObject(MyLocation::class.java)
+                    val singleLocationData = data.toObject(LocationData::class.java)
                     if (singleLocationData != null) {
                         singleLocationData.id = data.id
                         initialLocationList.add(singleLocationData)
@@ -67,7 +59,7 @@ class LocationRankingFragment:Fragment() {
                 performSort()
             }
 
-           override fun onNothingSelected(parent: AdapterView<*>?) {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
                 recyclerAdapter = LocationRecyclerAdapter(initialLocationList,spinnerIndex)
                 recyclerView.apply {
                     layoutManager = LinearLayoutManager(context)
@@ -75,30 +67,31 @@ class LocationRankingFragment:Fragment() {
                 }
             }
         }
-
         return view
     }
 
 
     fun updateArrayWithChips(view:View) {
-        val lista: ArrayList<MyLocation> = ArrayList()
+        val lista: ArrayList<LocationData> = ArrayList()
         for (chip in selectedChips) {
             for (data in initialLocationList) {
                 for(data2 in data.category){
-                if (data2==chip)
-                    if(!lista.contains(data))
-                    lista.add(data)
-
-            }}
+                    if (data2==chip) {
+                        if (!lista.contains(data))
+                            lista.add(data)
+                    }
+                }
+            }
         }
-        changingLocationList = lista
-        performSort()
+
         val nothingSelectedTextView = view.findViewById<TextView>(R.id.onNothingSelected)
         val addIcon = view.findViewById<ImageView>(R.id.add_icon)
         if (lista.isEmpty()) {
             nothingSelectedTextView?.visibility = View.VISIBLE
             addIcon?.visibility = View.VISIBLE
         } else {
+            changingLocationList = lista
+            performSort()
             nothingSelectedTextView?.visibility = View.GONE
             addIcon?.visibility = View.GONE
         }
@@ -106,7 +99,7 @@ class LocationRankingFragment:Fragment() {
 
     fun performSort(){
         val position=spinnerIndex
-        var sortedList: ArrayList<MyLocation> = ArrayList()
+        var sortedList: ArrayList<LocationData> = ArrayList()
         when(position){
             0 -> {
                 sortedList=
@@ -143,7 +136,7 @@ class LocationRankingFragment:Fragment() {
         showList(sortedList)
     }
 
-    fun showList(list:ArrayList<MyLocation>) {
+    fun showList(list:ArrayList<LocationData>) {
         val recyclerView = view?.findViewById<RecyclerView>(R.id.recycledviewer)
         recyclerAdapter = LocationRecyclerAdapter(list,spinnerIndex)
         recyclerView?.apply {
@@ -163,9 +156,4 @@ class LocationRankingFragment:Fragment() {
         bundle.putInt("spinnerindex",spinnerIndex)
 
     }
-
-
 }
-
-
-

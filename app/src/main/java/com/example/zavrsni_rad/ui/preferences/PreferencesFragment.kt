@@ -63,9 +63,9 @@ class PreferencesFragment: Fragment() {
                         val currentChip=view.findViewById<Chip>(chip.id)
                         if(currentChip?.text==chipText)
                             currentChip.isChecked=true
-                        }
                     }
                 }
+            }
         }
     }
 }

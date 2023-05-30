@@ -38,7 +38,7 @@
         app:srcCompat="@drawable/dialog2" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/greetingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView2"
@@ -91,7 +91,7 @@
         android:textSize="16dp" />
 
     <TextView
-        android:id="@+id/showemail"
+        android:id="@+id/UserEmailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView6"
@@ -106,7 +106,7 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/showemail"
+        android:layout_below="@+id/UserEmailText"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="30dp"
