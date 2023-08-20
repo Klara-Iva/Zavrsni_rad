@@ -14,6 +14,7 @@ import com.example.zavrsni_rad.R
 import com.example.zavrsni_rad.ui.preferences.SavedUserChips
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlin.math.sin
 
 
 class LocationRankingFragment:Fragment() {
@@ -36,7 +37,9 @@ class LocationRankingFragment:Fragment() {
                     val singleLocationData = data.toObject(LocationData::class.java)
                     if (singleLocationData != null) {
                         singleLocationData.id = data.id
+                        singleLocationData.overallGrade= (singleLocationData.accessibilityAverage!! +singleLocationData.excitementAverage!!+singleLocationData.originalityAverage!!+singleLocationData.photogenicAverage!!)/4
                         initialLocationList.add(singleLocationData)
+
                     }
                 }
                 changingLocationList = initialLocationList
@@ -57,6 +60,7 @@ class LocationRankingFragment:Fragment() {
                 spinnerIndex = position
                 SavedStates.setSpinnerIndex(position)
                 performSort()
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -98,42 +102,53 @@ class LocationRankingFragment:Fragment() {
     }
 
     fun performSort(){
+
         val position=spinnerIndex
         var sortedList: ArrayList<LocationData> = ArrayList()
         when(position){
-            0 -> {
+            0->{
+                sortedList =
+                    ArrayList(changingLocationList.sortedWith(compareByDescending {
+                        it.overallGrade
+                    }))
+
+            }
+            1 -> {
                 sortedList=
                     ArrayList(changingLocationList.sortedWith(compareByDescending{
                         it.excitementAverage
                     }))
             }
-            1 -> {
+            2 -> {
                 sortedList=
                     ArrayList(changingLocationList.sortedWith(compareByDescending{
                         it.accessibilityAverage
                     }))
             }
-            2 -> {
+            3 -> {
                 sortedList=
                     ArrayList(changingLocationList.sortedWith(compareByDescending{
                         it.originalityAverage
                     }))
             }
 
-            3 -> {
+            4 -> {
                 sortedList =
                     ArrayList(changingLocationList.sortedWith(compareByDescending {
                         it.photogenicAverage
                     }))
             }
-            4 -> {
+            5 -> {
                 sortedList =
                     ArrayList(changingLocationList.sortedWith(compareBy {
                         it.timeWorthAverage
                     }))
             }
+
         }
-        showList(sortedList)
+        if(SavedUserChips.list.isNotEmpty()){
+                showList(sortedList)
+        }
     }
 
     fun showList(list:ArrayList<LocationData>) {

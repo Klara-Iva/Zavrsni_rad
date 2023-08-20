@@ -49,7 +49,7 @@ class LocationDetailsActivity: AppCompatActivity() {
                 updateAllAverages(id)
             }
 
-        val findOnMap=findViewById<ImageView>(R.id.findItOnMap)
+        val findOnMap=findViewById<Button>(R.id.findItOnMap)
         findOnMap.setOnClickListener{
             var latitude : Double=0.0
             var longitude:Double=0.0

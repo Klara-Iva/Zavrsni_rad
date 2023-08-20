@@ -12,6 +12,7 @@ data class LocationData(
     var excitementAverage:Double?=null,
     var originalityAverage:Double?=null,
     var photogenicAverage:Double?=null,
-    var timeWorthAverage:Double?=null
+    var timeWorthAverage:Double?=null,
+    var overallGrade:Double?=null
 )
 

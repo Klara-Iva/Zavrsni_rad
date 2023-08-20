@@ -18,19 +18,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <Button
                 android:id="@+id/findItOnMap"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/description"
-                android:layout_alignEnd="@+id/excitementAverage"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:layout_toEndOf="@+id/HyperText"
-                android:rotation="0"
-                app:srcCompat="@drawable/ic_find_on_map"
-                app:tint="?colorSecondary" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="52dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="50dp"
+                android:text="Prikaži na karti"
+                android:textSize="16dp"
+                app:cornerRadius="20dp" />
 
             <ImageView
                 android:id="@+id/image1"
@@ -153,11 +155,11 @@
                 android:id="@+id/zanimljivost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView16"
+                android:layout_below="@+id/description"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="110dp"
                 android:text="zanimljivost:"
                 android:textColor="?colorSecondary"
                 android:textSize="14dp" />
@@ -379,19 +381,6 @@
                 android:text="Made with ❤"
                 android:textColor="?colorSecondary"
                 android:textSize="14dp" />
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/findItOnMap"
-                android:layout_alignStart="@+id/findItOnMap"
-                android:layout_alignEnd="@+id/findItOnMap"
-                android:layout_marginStart="-10dp"
-                android:layout_marginEnd="-10dp"
-                android:gravity="center"
-                android:text="Prikaži na karti"
-                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/HyperText"
