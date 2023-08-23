@@ -60,6 +60,28 @@ class ProfileFragment:Fragment() {
             activity!!.finish()
         }
 
+        val resetPasswordButton=view.findViewById<Button>(R.id.resetPasswordButton)
+        resetPasswordButton.setOnClickListener{
+            FirebaseAuth.getInstance().sendPasswordResetEmail(user?.email.toString())
+            Toast.makeText(context,"Provjerite sandučić pošte!",
+                Toast.LENGTH_LONG).show()
+        }
+
+        val aboutAppText=view.findViewById<TextView>(R.id.aboutApp)
+        aboutAppText.setOnClickListener{
+            val fragmentTransaction: FragmentTransaction?= activity?.supportFragmentManager?.beginTransaction()
+            fragmentTransaction?.replace(R.id.container, AboutAppFragment())
+            fragmentTransaction?.commit()
+        }
+
+        val helpCenter=view.findViewById<TextView>(R.id.helpCenter)
+        helpCenter.setOnClickListener{
+            val fragmentTransaction: FragmentTransaction?= activity?.supportFragmentManager?.beginTransaction()
+            fragmentTransaction?.replace(R.id.container, HelpCenter())
+            fragmentTransaction?.commit()
+        }
+
+
         val gradedLocationsCounter=view.findViewById<TextView>(R.id.gradedLocationsCounter)
         val collection = user?.uid?.let { db.collection("users")
             .document(it).collection("documents")}
@@ -74,28 +96,6 @@ class ProfileFragment:Fragment() {
                     gradedLocationsCounter.text= "0"
                 }
             }
-        }
-
-        val resetPasswordButton=view.findViewById<Button>(R.id.resetPasswordButton)
-        resetPasswordButton.setOnClickListener{
-            FirebaseAuth.getInstance().sendPasswordResetEmail(user?.email.toString())
-            Toast.makeText(context,"Provjerite sandučić pošte!",
-                Toast.LENGTH_LONG).show()
-        }
-
-
-        val text=view.findViewById<TextView>(R.id.aboutApp)
-        text.setOnClickListener{
-            val fragmentTransaction: FragmentTransaction?= activity?.supportFragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.container, AboutAppFragment())
-            fragmentTransaction?.commit()
-        }
-        val helpCenter=view.findViewById<TextView>(R.id.helpCenter)
-        helpCenter.setOnClickListener{
-
-            val fragmentTransaction: FragmentTransaction?= activity?.supportFragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.container, HelpCenter())
-            fragmentTransaction?.commit()
         }
 
         return view

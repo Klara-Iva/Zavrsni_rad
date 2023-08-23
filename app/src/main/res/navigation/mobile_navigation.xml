@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/navigation_ranking"
         android:name="com.example.zavrsni_rad.ui.rank.LocationRankingFragment"
-        android:label="Rank"
+        android:label="Rang-lista"
         tools:layout="@layout/fragment_location_ranking" />
 
     <fragment

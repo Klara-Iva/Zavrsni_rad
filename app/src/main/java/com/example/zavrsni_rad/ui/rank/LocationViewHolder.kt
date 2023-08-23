@@ -42,33 +42,44 @@ class LocationViewHolder (val view: View,val spinnerSelectedIndex:Int): Recycler
 
         }
         when(spinnerSelectedIndex){
-            0->{if(location.excitementAverage.toString()=="0.0")
-                averageGradeTextView?.text ="(0.00) ⭐"
-            else{ averageGradeTextView?.text =
-                "("+ DecimalFormat("#.00").format(location.excitementAverage)+")⭐" }
+            0->{
+                if(location.overallGrade.toString()=="0.0")
+                    averageGradeTextView?.text ="(0.00) ⭐"
+                else
+                    averageGradeTextView?.text =
+                        "("+  DecimalFormat("#.00").format(location.overallGrade)+")⭐"
             }
-            1->{if(location.accessibilityAverage.toString()=="0.0")
-                averageGradeTextView?.text ="(0.00) ⭐"
-            else
-                averageGradeTextView?.text = "("+  DecimalFormat("#.00").format(location.accessibilityAverage)+")⭐"
+            1->{
+                if(location.excitementAverage.toString()=="0.0")
+                    averageGradeTextView?.text ="(0.00) ⭐"
+                else{ averageGradeTextView?.text =
+                    "("+ DecimalFormat("#.00").format(location.excitementAverage)+")⭐" }
             }
-            2->{if(location.originalityAverage.toString()=="0.0")
-                averageGradeTextView?.text ="(0.00) ⭐"
-            else
-                averageGradeTextView?.text =
-                    "("+  DecimalFormat("#.00").format(location.originalityAverage)+")⭐"
+            2->{
+                if(location.accessibilityAverage.toString()=="0.0")
+                    averageGradeTextView?.text ="(0.00) ⭐"
+                else
+                    averageGradeTextView?.text = "("+  DecimalFormat("#.00").format(location.accessibilityAverage)+")⭐"
             }
             3->{
+                if(location.originalityAverage.toString()=="0.0")
+                    averageGradeTextView?.text ="(0.00) ⭐"
+                else
+                    averageGradeTextView?.text =
+                        "("+  DecimalFormat("#.00").format(location.originalityAverage)+")⭐"
+            }
+            4->{
                 if(location.photogenicAverage.toString()=="0.0")
                     averageGradeTextView?.text ="(0.00) ⭐"
                 else
                     averageGradeTextView?.text =
                         "("+  DecimalFormat("#.00").format(location.photogenicAverage)+")⭐"
             }
-            4->{
+            5->{
                 val initalNumber=location.timeWorthAverage!!.toDouble()
                 show(initalNumber)
             }
+
         }
     }
 

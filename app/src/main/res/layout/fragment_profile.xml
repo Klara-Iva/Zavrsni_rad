@@ -113,7 +113,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:justificationMode="inter_word"
-        android:text="Zaboravili ste lozinku?\nPristikom na 'Pošalji upute' poslat će se email s uputama za resetiranje lozinke na vašu email adresu."
+        android:text="Zaboravili ste lozinku?\nOdabirom 'Pošalji upute' poslati će se email s uputama za ponovno postavljanje lozinke na vašu email adresu."
         android:textSize="16dp" />
 
     <Button

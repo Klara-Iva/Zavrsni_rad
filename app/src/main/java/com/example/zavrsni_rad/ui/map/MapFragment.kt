@@ -85,45 +85,6 @@ class MapFragment:Fragment(), OnMapReadyCallback {
                     true
                 }
             }
-
-       /*var i:Int=10
-
-        val initalData = hashMapOf(
-
-            "originalitySum" to 0.0,
-            "originalityCount" to 0,
-            "originalityAverage" to 0.0,
-            "excitementSum" to 0.0,
-            "excitementCount" to 0,
-            "excitementAverage" to  0.0,
-            "accessibilitySum"  to 0.0,
-            "accessibilityCount" to 0,
-            "accessibilityAverage" to 0.0,
-            "photogenicSum" to 0.0,
-            "photogenicCount" to 0,
-            "photogenicAverage" to 0.0,
-            "timeWorthSum" to 0.0,
-            "timeWorthCount" to  0,
-            "timeWorthAverage" to 0.0,
-        )
-        db.collection("places").document("01").update(initalData as Map<String, Any>)
-        db.collection("places").document("02").update(initalData as Map<String, Any>)
-        db.collection("places").document("03").update(initalData as Map<String, Any>)
-        db.collection("places").document("04").update(initalData as Map<String, Any>)
-        db.collection("places").document("05").update(initalData as Map<String, Any>)
-        db.collection("places").document("06").update(initalData as Map<String, Any>)
-        db.collection("places").document("07").update(initalData as Map<String, Any>)
-        db.collection("places").document("08").update(initalData as Map<String, Any>)
-        db.collection("places").document("09").update(initalData as Map<String, Any>)
-        while(i<=29) {
-            db.collection("places").document(i.toString()).update(initalData as Map<String, Any>)
-
-            i++
-        }*/
-
-
-
-
     }
 
 

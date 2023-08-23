@@ -3,6 +3,7 @@
 
 
     <string-array name="categories">
+        <item>najbolje ocijenjeno</item>
         <item>zanimljivost</item>
         <item>pristupačnost</item>
         <item>orginalnost</item>

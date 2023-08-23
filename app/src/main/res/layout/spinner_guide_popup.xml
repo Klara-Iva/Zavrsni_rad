@@ -18,7 +18,7 @@
         android:fontFamily="sans-serif"
         android:gravity="center_horizontal"
         android:padding="2dp"
-        android:text="Klikom na &quot;zanimljivost&quot; možete otvoriti izbornik s još kriterija. Prema odabranom prikazati će Vam se najbolje lokacije."
+        android:text="Klikom na &quot;najbolje ocijenjeno&quot; možete otvoriti izbornik s još kriterija. Prema odabranom prikazati će Vam se najbolje lokacije."
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
