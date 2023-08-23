@@ -8,7 +8,6 @@ import android.text.method.LinkMovementMethod
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isEmpty
 import androidx.core.view.iterator
 import com.bumptech.glide.Glide
 import com.example.zavrsni_rad.ui.map.CameraBounds
@@ -288,14 +287,13 @@ class LocationDetailsActivity: AppCompatActivity() {
 
     }
 
-    fun updateRating(rating:RatingBar, id:String,category:String){
-
+    fun updateRating(rating:RatingBar, id:String, filterName:String){
         if (rating.rating.toString() != "0.0" && !rating.isIndicator) {
             db.collection("places").document(id).get().addOnSuccessListener { document ->
-                var Count = document.data!!["${category}"+ "Count"].toString().toDouble()
-                var Sum = document.data!!["${category}"+"Sum"].toString().toDouble()
+                var Count = document.data!!["${filterName}"+ "Count"].toString().toDouble()
+                var Sum = document.data!!["${filterName}"+"Sum"].toString().toDouble()
                 if(Sum==0.0){
-                checkIfSumRatingIsZero(rating,id,category,Sum)
+                checkIfSumRatingIsZero(rating,id,filterName,Sum)
                 }
                 else {
                     Sum += rating.rating.toDouble()
@@ -305,13 +303,13 @@ class LocationDetailsActivity: AppCompatActivity() {
                         db.collection("users")
                             .document(it.uid).collection("documents")
                             .document("${id}")
-                            .update("${category}" + "Rating", rating.rating.toDouble())
+                            .update("${filterName}" + "Rating", rating.rating.toDouble())
                     }
                     rating.setIsIndicator(true)
                     db.collection("places").document(id).update(
-                        "${category}" + "Sum", Sum,
-                        "${category}" + "Count", Count,
-                        "${category}" + "Average", average
+                        "${filterName}" + "Sum", Sum,
+                        "${filterName}" + "Count", Count,
+                        "${filterName}" + "Average", average
                     )
                         .addOnSuccessListener {
                             Toast.makeText(
@@ -327,20 +325,20 @@ class LocationDetailsActivity: AppCompatActivity() {
     }
 
     @SuppressLint("SuspiciousIndentation")
-    fun checkIfSumRatingIsZero(rating:RatingBar, id:String, category:String, Sum:Double){
+    fun checkIfSumRatingIsZero(rating:RatingBar, id:String, filterName:String, Sum:Double){
 
              val sum: Double =rating.rating.toDouble()
                 user?.let {
                     db.collection("users")
                         .document(it.uid).collection("documents")
                         .document("${id}")
-                        .update("${category}"+"Rating", rating.rating.toDouble())
+                        .update("${filterName}"+"Rating", rating.rating.toDouble())
                 }
                 rating.setIsIndicator(true)
                 db.collection("places").document(id).update(
-                    "${category}"+"Sum", sum,
-                    "${category}"+"Count", 1,
-                    "${category}"+"Average", sum
+                    "${filterName}"+"Sum", sum,
+                    "${filterName}"+"Count", 1,
+                    "${filterName}"+"Average", sum
                 )
                     .addOnSuccessListener { Toast.makeText(this,"Spremljeno!", Toast.LENGTH_SHORT).show() }
                 updateAllAverages(id)
