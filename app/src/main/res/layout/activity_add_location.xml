@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+
+        tools:layout_editor_absoluteY="-16dp">
+
+        <RelativeLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/addNewLocationWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="30dp"
+                android:textAlignment="center"
+                 android:text="DODAJ NOVU LOKACIJU: "
+                 />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="54dp"
+                android:layout_height="59dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="40dp"
+
+                app:srcCompat="@drawable/ic_baseline_location_on_24"
+                app:tint="?colorSecondary"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="2dp" />
+
+
+            <EditText
+                android:id="@+id/locationName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:ems="10"
+                android:layout_below="@id/addNewLocationWelcome"
+                android:hint=" *ime turističkog odredišta"
+                android:inputType="textPersonName" />
+
+
+            <EditText
+                android:id="@+id/addLatitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_below="@id/locationName"
+                android:ems="10"
+                android:hint=" *latitude"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/addLongitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+android:layout_below="@id/addLatitude"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint=" *longitude" />
+
+
+            <EditText
+                android:id="@+id/addDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+android:layout_below="@id/addLongitude"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint=" *opis" />
+
+
+            <EditText
+                android:id="@+id/addLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+android:layout_below="@id/addDescription"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="link web-stranice" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="polja označena s * su obavezna"
+                android:layout_below="@id/addLink"
+                android:layout_marginLeft="40dp"
+                android:textSize="12sp"
+                android:textColor="#FF0000"
+
+                />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/addChipGroupCategories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/addLink"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/addchip1"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="aktualno"
+                    android:textSize="14dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/addchip2"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="duhovnost"
+                    android:textSize="14dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/addchip3"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="eksperimenti"
+                    android:textSize="14dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/addchip4"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="građevine"
+                    android:textSize="14dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/addchip5"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="interaktivno"
+                    android:textSize="14dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/addchip6"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="spomenici"
+                    android:textSize="14dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/addchip7"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="povijest"
+                    android:textSize="14dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/addchip8"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="priroda"
+                    android:textSize="14dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/addchip9"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="umjetnost"
+                    android:textSize="14dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/addchip10"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="sport"
+                    android:textSize="14dp" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+
+
+            <ImageView
+                android:id="@+id/selectedImageViewBig"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/logo"
+                android:layout_below="@id/addChipGroupCategories"
+                android:layout_centerHorizontal="true"
+                />
+
+            <Button
+                android:id="@+id/chooseBigPicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selectedImageViewBig"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="IZABERI veliku SLIKU"
+                android:textSize="16sp"
+                app:cornerRadius="20dp"
+
+                />
+
+
+            <ImageView
+                android:id="@+id/selectedImageViewSmall"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/logo"
+                android:layout_below="@id/chooseBigPicture"
+                android:layout_centerHorizontal="true"
+                />
+
+            <Button
+                android:id="@+id/chooseSmallPicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selectedImageViewSmall"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="IZABERI malenu SLIKU"
+                android:textSize="16sp"
+                app:cornerRadius="20dp"
+
+                />
+            <Button
+                android:id="@+id/saveNewLocation"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chooseSmallPicture"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="100dp"
+                android:text="SPREMI novu lokaciju"
+
+                android:textSize="18sp"
+                app:cornerRadius="20dp"
+
+                />
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/closebutton"
+        android:layout_width="40dp"
+        android:layout_height="39dp"
+        android:layout_margin="10dp"
+        android:alpha="0.7"
+        android:background="@drawable/circle_37"
+        android:backgroundTint="?colorOnSecondary"
+        android:padding="4dp"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_close_35dp"
+        app:tint="@color/orange"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,13 @@
 package com.example.zavrsni_rad
 
+import android.graphics.Paint
 import android.os.Bundle
+import android.widget.Button
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.zavrsni_rad.ui.map.MapFragment
+import com.example.zavrsni_rad.ui.popup.PasswordResetPopUp
 import com.example.zavrsni_rad.ui.popup.PopUpFragment
 import com.example.zavrsni_rad.ui.popup.SpinnerInstructionsPopUp
 import com.example.zavrsni_rad.ui.preferences.PreferencesFragment
@@ -43,6 +46,7 @@ class MainActivity : AppCompatActivity() {
                     SavedUserChips.addItems(selectedChipsArray)
                 }
         }
+
 
 
 if(newUser=="true") {

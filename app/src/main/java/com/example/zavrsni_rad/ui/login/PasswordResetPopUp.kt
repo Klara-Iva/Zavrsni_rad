@@ -17,7 +17,7 @@ class PasswordResetPopUp: DialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view=inflater.inflate(R.layout.reset_password_popup,container, false )
+        val view=inflater.inflate(R.layout.forgotten_password_popup,container, false )
         return view
     }
 
