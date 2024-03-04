@@ -17,7 +17,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
-class MapFragment:Fragment(), OnMapReadyCallback {
+class MMapFragment:Fragment(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private val db = Firebase.firestore
     var marker: Marker? = null

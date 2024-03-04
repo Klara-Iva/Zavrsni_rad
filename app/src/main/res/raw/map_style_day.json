@@ -1,0 +1,11 @@
+[
+
+  // Optional: Reduce map element visibility
+  {
+    "featureType": "poi",
+    "elementType": "all",
+    "stylers": [
+      { "visibility": "off" } // Hide points of interest (optional)
+    ]
+  }
+]
