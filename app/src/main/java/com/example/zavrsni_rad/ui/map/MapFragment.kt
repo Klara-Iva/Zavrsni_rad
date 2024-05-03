@@ -1,27 +1,38 @@
 package com.example.zavrsni_rad.ui.map
 
+import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.res.Configuration
+import android.hardware.Sensor
+import android.hardware.SensorManager
+import android.location.LocationManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.zavrsni_rad.LocationDetailsActivity
-import com.example.zavrsni_rad.R
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.example.zavrsni_rad.LocationDetailsActivity
+import com.example.zavrsni_rad.R
+import com.example.zavrsni_rad.ui.map.CameraBounds
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
-class MMapFragment:Fragment(), OnMapReadyCallback {
+class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private val db = Firebase.firestore
     var marker: Marker? = null
     val markers = mutableListOf<Marker?>()
+    private val LOCATION_PERMISSION_REQUEST_CODE = 101
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +48,36 @@ class MMapFragment:Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraBounds.getCameraPosition()))
-        mMap.setOnCameraMoveListener { CameraBounds.setCameraPosition( mMap.cameraPosition) }
+        mMap.setOnCameraMoveListener { CameraBounds.setCameraPosition(mMap.cameraPosition) }
+
+        val isNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+
+        if (isNightMode) { mMap.setMapStyle(context?.let { MapStyleOptions.loadRawResourceStyle(it, R.raw.map_style) }) }
+       else{ mMap.setMapStyle(context?.let { MapStyleOptions.loadRawResourceStyle(it, R.raw.map_style_day) }) }
+
+        checkLocationPermission(requireContext())
+        mMap.setMyLocationEnabled(true)
+        mMap.uiSettings.setMyLocationButtonEnabled(true)
+        mMap.uiSettings.setAllGesturesEnabled(true)
+        mMap.uiSettings.setZoomControlsEnabled(true)
+        mMap.uiSettings.setCompassEnabled(true)
+
+        // Initialize compass and direction indicator
+        val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val sensorManager = context?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
+        // Register listener for compass sensor readings
+        val compass = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION) // Corrected import
+
+
+
+
+
+
+
+
+
+
         val locations = mutableListOf<MapMarker>()
         val docRef = db.collection("places")
         docRef.get()
@@ -50,21 +90,22 @@ class MMapFragment:Fragment(), OnMapReadyCallback {
                     locations.add(MapMarker(document.id, coordinates))
                 }
             }
-            .addOnCompleteListener{
+            .addOnCompleteListener {
                 for (location in locations) {
                     val myMarker = mMap.addMarker(MarkerOptions().position(location.cordinates))
                     myMarker!!.tag = location.id
                     markers.add(myMarker)
                 }
 
-                if(CameraBounds.showSpecifiedLocationOnMap) {
+                if (CameraBounds.showSpecifiedLocationOnMap) {
                     marker = mMap.addMarker(
                         MarkerOptions().position(
                             LatLng(
                                 CameraBounds.latitude,
                                 CameraBounds.longitude
                             )
-                        ).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                        )
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                             .title("Ovdje je!")
                     )
                     marker!!.showInfoWindow()
@@ -75,7 +116,7 @@ class MMapFragment:Fragment(), OnMapReadyCallback {
                     mMap.setOnMapClickListener {
                         marker!!.remove()
                     }
-                    CameraBounds.showSpecifiedLocationOnMap=false
+                    CameraBounds.showSpecifiedLocationOnMap = false
                 }
 
                 mMap.setOnMarkerClickListener {
@@ -86,6 +127,46 @@ class MMapFragment:Fragment(), OnMapReadyCallback {
                 }
             }
     }
+    private fun checkLocationPermission(context: Context) {
+        if (ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // Permission not granted, request it
+            requestPermissions(
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
+        } else {
+            // Permission granted, show user location
+            showUserLocation(mMap)
+        }
+    }
+
+    private fun showUserLocation(googleMap: GoogleMap) {
+        val locationManager = context?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+
+
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            val location =
+                locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            if (location != null) {
+                val userLatLng = LatLng(location.latitude, location.longitude)
+                val marker = MarkerOptions().position(userLatLng).title("You are here")
+                marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                //googleMap.addMarker(marker)
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15.0f))
+            } else {
+                Toast.makeText(context, "Unable to get your location.", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Toast.makeText(context, "Please enable GPS to show your location.", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
 
 
     data class MapMarker(

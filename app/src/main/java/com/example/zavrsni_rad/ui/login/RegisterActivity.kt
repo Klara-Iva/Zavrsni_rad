@@ -101,7 +101,7 @@ class RegisterActivity: AppCompatActivity() {
                     finish()
                 }
                 else {
-                    Toast.makeText(baseContext, "Email već postoji ili je neispravan", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "Nepoznati error", Toast.LENGTH_SHORT).show()
                 }
             }
         return
